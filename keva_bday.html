@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keva's Birthday Party</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4, #45B7D1, #96CEB4);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+            animation: cardPop 0.8s ease-out;
+        }
+
+        @keyframes cardPop {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: headerPattern 4s linear infinite;
+        }
+
+        @keyframes headerPattern {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .birthday-person {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            animation: nameGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes nameGlow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .age-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .age-text {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .age-number {
+            font-size: 4rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FFD93D, #FF6B6B);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: ageSpinGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes ageSpinGlow {
+            0%, 100% { 
+                transform: rotate(0deg) scale(1);
+                filter: drop-shadow(0 0 10px rgba(255,105,180,0.5));
+            }
+            50% { 
+                transform: rotate(5deg) scale(1.1);
+                filter: drop-shadow(0 0 20px rgba(255,105,180,0.8));
+            }
+        }
+
+        .celebration {
+            font-size: 1.3rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .details {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        @keyframes slideIn {
+            0% { transform: translateX(-30px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+
+        .detail-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-right: 20px;
+            width: 50px;
+            text-align: center;
+        }
+
+        .detail-text {
+            flex: 1;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .value {
+            color: #666;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .rsvp {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            animation: rsvpPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes rsvpPulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(102,126,234,0.5); }
+            50% { box-shadow: 0 0 30px rgba(102,126,234,0.8); }
+        }
+
+        .rsvp h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .rsvp p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .editable {
+            border: none;
+            background: transparent;
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+            cursor: text;
+            outline: none;
+            border-radius: 5px;
+            padding: 2px 5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            min-width: 50px;
+        }
+
+        .editable:focus {
+            background: rgba(102,126,234,0.1);
+            transform: scale(1.02);
+        }
+
+        .editable:hover {
+            background: rgba(102,126,234,0.05);
+        }
+
+        .balloons {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            animation: floatBalloons 3s ease-in-out infinite;
+        }
+
+        @keyframes floatBalloons {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 600px) {
+            .card {
+                margin: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .name {
+                font-size: 2.2rem;
+            }
+            
+            .age-number {
+                font-size: 3rem;
+            }
+            
+            .age-text {
+                font-size: 1.2rem;
+            }
+            
+            .details {
+                padding: 20px;
+            }
+            
+            .detail-item {
+                padding: 12px;
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .name {
+                font-size: 1.8rem;
+            }
+            
+            .age-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="balloons">🎈🎉</div>
+        
+        <div class="header">
+            <h1>🎊 You're Invited! 🎊</h1>
+            <p>Join us for an amazing birthday celebration!</p>
+        </div>
+        
+        <div class="content">
+            <div class="birthday-person">
+                <div class="name">
+                    <input type="text" class="editable" value="Keva" placeholder="Name">
+                </div>
+                <div class="age-section">
+                    <span class="age-text">is turning</span>
+                    <span class="age-number">
+                        <input type="text" class="editable" value="10" placeholder="Age" style="width: 60px; text-align: center;">
+                    </span>
+                </div>
+                <div class="celebration">Let's celebrate together! 🎂</div>
+            </div>
+            
+            <div class="details">
+                <div class="detail-item" style="animation-delay: 0.2s;">
+                    <div class="icon">📅</div>
+                    <div class="detail-text">
+                        <div class="label">Date</div>
+                        <div class="value highlight">
+                            <input type="text" class="editable highlight" value="Saturday, March 15th" placeholder="Enter date">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="detail-item" style="animation-delay: 0.4s;">
+                    <div class="icon">⏰</div>
+                    <div class="detail-text">
+                        <div class="label">Time</div>
+                        <div class="value highlight">7:00 PM - 10:00 PM</div>
+                    </div>
+                </div>
+                
+                <div class="detail-item" style="animation-delay: 0.6s;">
+                    <div class="icon">📍</div>
+                    <div class="detail-text">
+                        <div class="label">Venue</div>
+                        <div class="value">
+                            <input type="text" class="editable" value="PASCO Brand Square Building, 3rd Floor, Above Centro Mall, Pimple Saudagar" placeholder="Enter address">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="detail-item" style="animation-delay: 0.8s;">
+                    <div class="icon">🎮</div>
+                    <div class="detail-text">
+                        <div class="label">Fun Activities</div>
+                        <div class="value">Games • Music • Dancing • Cake • Surprises!</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rsvp">
+                <h3>🎁 RSVP Required 🎈</h3>
+                <p>Contact: <input type="text" class="editable" value="Your Phone Number" placeholder="+91 XXXXXXXXXX" style="color: white; text-decoration: underline;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simple auto-resize for input fields
+        document.querySelectorAll('.editable').forEach(input => {
+            function resize() {
+                input.style.width = Math.max(input.value.length * 8 + 20, 50) + 'px';
+            }
+            
+            input.addEventListener('input', resize);
+            resize();
+        });
+
+        // Simple click effect
+        document.addEventListener('click', function(e) {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            sparkle.style.fontSize = '20px';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '1000';
+            sparkle.style.animation = 'sparkleEffect 1s ease-out forwards';
+            
+            document.body.appendChild(sparkle);
+            setTimeout(() => sparkle.remove(), 1000);
+        });
+
+        // Add sparkle animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes sparkleEffect {
+                0% { opacity: 1; transform: scale(0.5); }
+                50% { opacity: 1; transform: scale(1.2); }
+                100% { opacity: 0; transform: scale(0.5) translateY(-50px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
