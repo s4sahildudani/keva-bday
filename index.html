@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Keva's Birthday Party</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #1c1c1e;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(255, 255, 255, 0.1);
+      max-width: 480px;
+      width: 100%;
+      animation: fadeIn 1s ease-out;
+      overflow: hidden;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .header {
+      background: linear-gradient(135deg, #ff4e50, #f9d423);
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fff;
+      animation: bounce 1.8s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .header p {
+      font-size: 1rem;
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .content {
+      padding: 25px 20px;
+    }
+
+    .name {
+      font-size: 2.2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #f9d423, #ff4e50);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .age-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .age-text {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .age-number input {
+      font-size: 2.5rem;
+      font-weight: bold;
+      background: linear-gradient(45deg, #ffd93d, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-align: center;
+      border: none;
+      outline: none;
+      width: 60px;
+    }
+
+    .celebration {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 30px;
+      color: #aaa;
+    }
+
+    .details {
+      background: #2c2c2e;
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+    }
+
+    .detail-item {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: start;
+    }
+
+    .icon {
+      font-size: 1.5rem;
+      margin-right: 15px;
+    }
+
+    .detail-text .label {
+      font-weight: bold;
+      margin-bottom: 3px;
+      color: #f9d423;
+    }
+
+    .detail-text .value {
+      color: #ddd;
+      font-size: 0.95rem;
+    }
+
+    .rsvp {
+      background: #3c3c3e;
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .rsvp h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: #f9d423;
+    }
+
+    .editable {
+      background: transparent;
+      border: none;
+      outline: none;
+      font: inherit;
+      color: inherit;
+      min-width: 60px;
+      padding: 2px 5px;
+      text-align: center;
+    }
+
+    .editable::placeholder {
+      color: #888;
+    }
+
+    .balloons {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.8rem;
+      animation: floatBalloons 3s ease-in-out infinite;
+    }
+
+    @keyframes floatBalloons {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        margin: 10px;
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      .name {
+        font-size: 1.8rem;
+      }
+
+      .age-text {
+        font-size: 1rem;
+      }
+
+      .age-number input {
+        font-size: 2rem;
+        width: 50px;
+      }
+
+      .icon {
+        font-size: 1.2rem;
+      }
+
+      .detail-text .value {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="balloons">🎈🎉</div>
+    <div class="header">
+      <h1>🎊 You're Invited! 🎊</h1>
+      <p>Join us for a magical birthday celebration</p>
+    </div>
+
+    <div class="content">
+      <div class="name">
+        <input type="text" class="editable" value="Keva" placeholder="Name" />
+      </div>
+
+      <div class="age-section">
+        <div class="age-text">is turning</div>
+        <div class="age-number">
+          <input type="text" class="editable" value="10" />
+        </div>
+      </div>
+
+      <div class="celebration">Let's celebrate together with fun & laughter! 🎂</div>
+
+      <div class="details">
+        <div class="detail-item">
+          <div class="icon">📅</div>
+          <div class="detail-text">
+            <div class="label">Date</div>
+            <div class="value">
+              <input type="text" class="editable" value="Saturday, March 15th" />
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="icon">⏰</div>
+          <div class="detail-text">
+            <div class="label">Time</div>
+            <div class="value">7:00 PM - 10:00 PM</div>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="icon">📍</div>
+          <div class="detail-text">
+            <div class="label">Venue</div>
+            <div class="value">
+              <input type="text" class="editable" value="PASCO Brand Square, 3rd Floor, Pimple Saudagar" />
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <div class="icon">🎮</div>
+          <div class="detail-text">
+            <div class="label">Fun Activities</div>
+            <div class="value">Games • Music • Dance • Cake • Surprises!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rsvp">
+        <h3>🎁 RSVP</h3>
+        <p>Call/Text: <input type="text" class="editable" value="+91 9876543210" /></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sparkle click effect
+    document.addEventListener('click', (e) => {
+      const sparkle = document.createElement('div');
+      sparkle.textContent = '✨';
+      sparkle.style.position = 'fixed';
+      sparkle.style.left = `${e.clientX}px`;
+      sparkle.style.top = `${e.clientY}px`;
+      sparkle.style.fontSize = '18px';
+      sparkle.style.animation = 'sparkleEffect 0.8s ease forwards';
+      sparkle.style.pointerEvents = 'none';
+      sparkle.style.zIndex = '9999';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 800);
+    });
+
+    const sparkleStyle = document.createElement('style');
+    sparkleStyle.textContent = `
+      @keyframes sparkleEffect {
+        0% { opacity: 1; transform: scale(1); }
+        100% { opacity: 0; transform: scale(2) translateY(-30px); }
+      }
+    `;
+    document.head.appendChild(sparkleStyle);
+  </script>
+</body>
+</html>
